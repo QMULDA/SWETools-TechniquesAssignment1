@@ -8,7 +8,6 @@ public class GetMintermList {
 	
 	@SuppressWarnings("unused")
 	private static 	String[] minList=new String[256];
-	int i = 0;
 	
 	public void setMinList(String x){
 	
