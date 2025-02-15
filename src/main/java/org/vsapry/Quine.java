@@ -60,7 +60,7 @@ public class Quine {
 
 		int totalReduced = reducedCount;
 		for (int i = 0; i < count; i++) {
-			if (used[i] == false) {
+			if (!used[i]) {
 				reducedTerms[totalReduced++] = terms[i];
 			}
 		}
