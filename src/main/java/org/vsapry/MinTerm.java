@@ -76,19 +76,6 @@ public class MinTerm {
 		return resCount;
 	}
 
-	// position of the first difference
-
-	public int resolutionPos(MinTerm a) throws ExceptionQuine {
-		if (count != a.count)
-			throw new ExceptionQuine("MinTerm::resoutionPos()");
-		for (int i = 0; i < count; i++) {
-			if (term[i] != a.term[i])
-				return i;
-		}
-
-		return -1;
-	}
-
 	// combining two minterms
 
 	public static MinTerm combine(MinTerm a, MinTerm b) throws ExceptionQuine {
