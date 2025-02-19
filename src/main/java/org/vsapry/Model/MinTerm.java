@@ -1,4 +1,6 @@
-package org.vsapry;
+package org.vsapry.Model;
+
+import org.vsapry.ExceptionQuine;
 
 public class MinTerm {
 	// input data representation

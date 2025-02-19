@@ -3,7 +3,7 @@ package org.vsapry.View;
 
 import org.vsapry.ExceptionQuine;
 import org.vsapry.GetMintermList;
-import org.vsapry.Quine;
+import org.vsapry.Controller.Quine;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

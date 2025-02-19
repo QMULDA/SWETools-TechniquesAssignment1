@@ -1,4 +1,7 @@
-package org.vsapry;
+package org.vsapry.Controller;
+
+import org.vsapry.ExceptionQuine;
+import org.vsapry.Model.MinTerm;
 
 public class Quine {
 	// macro
