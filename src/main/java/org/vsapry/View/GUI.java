@@ -225,7 +225,7 @@ public class GUI extends JFrame {
                     String temp1 = quine.toString();
 
                     resultShow.setText(temp1);
-                } catch (ExceptionQuine e) {
+                } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
