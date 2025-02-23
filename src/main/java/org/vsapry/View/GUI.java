@@ -1,9 +1,9 @@
 package org.vsapry.View;
 
 
-import org.vsapry.ExceptionQuine;
-import org.vsapry.GetMintermList;
-import org.vsapry.Controller.Quine;
+import org.vsapry.Controller.MinTermListController;
+import org.vsapry.Model.MinTermList;
+import org.vsapry.Model.Quine;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -41,7 +41,7 @@ public class GUI extends JFrame {
     static public int k = 0;
     static public Set<String> set;
     public String temp;
-    GetMintermList item = new GetMintermList();
+    MinTermList item = new MinTermList();
 
     static public String dataThree(String input) {
         String bin[] = {"000", "001", "010", "011", "100", "101", "110", "111"};
@@ -199,8 +199,9 @@ public class GUI extends JFrame {
 
                 Quine quine = new Quine();
 
+                set = MinTermListController.getMin();
+                //set = GetMintermList.getMin();
 
-                set = GetMintermList.getMin();
                 @SuppressWarnings("unused")
                 int len = set.size();
                 try {
