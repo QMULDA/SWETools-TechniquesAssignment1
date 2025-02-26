@@ -34,14 +34,12 @@ public class GUI extends JFrame {
 
     private JTextArea resultShow;
     private JButton calBt;
-    @SuppressWarnings("unused")
-    private int i = 0;
-
 
     static public int k = 0;
     static public Set<String> set;
     public String temp;
-    MinTermList item = new MinTermList();
+
+    private static MinTermListController controller = new MinTermListController(new MinTermList());
 
     static public String dataThree(String input) {
         String bin[] = {"000", "001", "010", "011", "100", "101", "110", "111"};
@@ -73,8 +71,10 @@ public class GUI extends JFrame {
 
     }
 
-    public GUI() {
+    public GUI(MinTermListController controller) {
         super("Quine McCluskey Prime Implicant Generator");
+        this.controller = controller;
+
         setLayout(null);
         setSize(550, 500);
         setResizable(false);
@@ -105,8 +105,6 @@ public class GUI extends JFrame {
             @Override
             public void keyReleased(KeyEvent arg0) {
 
-                @SuppressWarnings("unused")
-                int flag = 0;
                 int st = MenuBar.bits;
 
                 System.out.println(minIn.getText());
@@ -177,7 +175,7 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 minIn.setText("");
-                item.setMinList(temp);
+                controller.setMinList(temp);
 
 
             }
@@ -200,14 +198,11 @@ public class GUI extends JFrame {
                 Quine quine = new Quine();
 
                 set = MinTermListController.getMin();
-                //set = GetMintermList.getMin();
 
-                @SuppressWarnings("unused")
-                int len = set.size();
                 try {
                     Iterator<String> it = set.iterator();
 
-                    while (it.hasNext() == true) {
+                    while (it.hasNext()) {
 
                         String str = it.next();
 
@@ -274,7 +269,7 @@ public class GUI extends JFrame {
         }
 
 
-        GUI gui = new GUI();
+        GUI gui = new GUI(controller);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
