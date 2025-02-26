@@ -217,7 +217,6 @@ public class GUI extends JFrame {
                     }
 
 
-                    quine.simplify();
                     String temp1 = quine.toString();
 
                     resultShow.setText(temp1);

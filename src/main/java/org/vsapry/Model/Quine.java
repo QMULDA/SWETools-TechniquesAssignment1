@@ -34,12 +34,6 @@ public class Quine {
 		return false;
 	}
 
-	// verification of the function
-	public void simplify() throws ExceptionQuine {
-		while (reduce() > 0)
-			;
-	}
-
 	// reduction of the minterm
 	private int reduce() throws ExceptionQuine {
 		// variable
