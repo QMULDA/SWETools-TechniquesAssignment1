@@ -39,7 +39,7 @@ public class GUI extends JFrame {
     static public Set<String> set;
     public String temp;
 
-    private static MinTermListController controller = new MinTermListController(new MinTermList());
+    private final MinTermListController controller;
 
     static public String dataThree(String input) {
         String bin[] = {"000", "001", "010", "011", "100", "101", "110", "111"};
@@ -237,6 +237,10 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
 
+        MinTermList model = new MinTermList();
+        MinTermListController controller = new MinTermListController(model);
+        GUI gui = new GUI(controller);
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -267,11 +271,6 @@ public class GUI extends JFrame {
                     JOptionPane.ERROR_MESSAGE, null);
 
         }
-
-
-        GUI gui = new GUI(controller);
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
     }
 }
