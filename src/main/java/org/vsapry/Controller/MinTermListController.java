@@ -8,16 +8,18 @@
 
         private MinTermList model;
 
-        public static Set<String> getMin(){
-            return MinTermList.getMin();
+        public MinTermListController(MinTermList model) {
+            this.model = model;
+        }
+
+        public Set<String> getMin(){
+            return model.getMin();
         }
 
         public void setMinList(String x){
             model.setMinList(x);
         }
 
-        public MinTermListController(MinTermList model) {
-            this.model = model;
-        }
+
 
     }

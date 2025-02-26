@@ -197,7 +197,7 @@ public class GUI extends JFrame {
 
                 Quine quine = new Quine();
 
-                set = MinTermListController.getMin();
+                set = controller.getMin();
 
                 try {
                     Iterator<String> it = set.iterator();

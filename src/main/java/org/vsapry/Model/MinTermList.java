@@ -5,7 +5,7 @@ import java.util.TreeSet;
 
 public class MinTermList {
 
-    static Set<String> set=new TreeSet<String>();
+    private Set<String> set=new TreeSet<String>();
 
     public void setMinList(String x){
 
@@ -13,8 +13,8 @@ public class MinTermList {
 
     }
 
-    public static Set<String> getMin(){
-        return set;
+    public Set<String> getMin() {
+        return new TreeSet<>(set);
     }
 
 }
