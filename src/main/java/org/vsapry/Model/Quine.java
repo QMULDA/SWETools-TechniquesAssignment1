@@ -41,7 +41,7 @@ public class Quine {
 	}
 
 	// reduction of the minterm
-	private int reduce() throws ExceptionQuine {
+	public int reduce() throws ExceptionQuine {
 		// variable
 		int reducedCount = 0;
 		MinTerm[] reducedTerms = new MinTerm[MAX_TERMS];

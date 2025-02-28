@@ -2,6 +2,7 @@ package org.vsapry.View;
 
 
 import org.vsapry.Controller.MinTermListController;
+import org.vsapry.Controller.QuineController;
 import org.vsapry.Model.MinTermList;
 import org.vsapry.Model.Quine;
 
@@ -196,6 +197,7 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent arg0) {
 
                 Quine quine = new Quine();
+                QuineController quinecontroller = new QuineController(quine);
 
                 set = controller.getMin();
 
@@ -207,18 +209,18 @@ public class GUI extends JFrame {
                         String str = it.next();
 
                         if (MenuBar.bits == 3)
-                            quine.addTerm(dataThree(str));
+                            quinecontroller.addTerm(dataThree(str));
                         else if (MenuBar.bits == 4)
-                            quine.addTerm(dataFour(str));
+                            quinecontroller.addTerm(dataFour(str));
                         else if (MenuBar.bits == 5)
-                            quine.addTerm(dataFive(str));
+                            quinecontroller.addTerm(dataFive(str));
 
                         System.out.println(str);
                     }
 
 
-                    quine.simplify();
-                    String temp1 = quine.toString();
+                    quinecontroller.simplify();
+                    String temp1 = quinecontroller.toString();
 
                     resultShow.setText(temp1);
                 } catch (Exception e) {
@@ -237,8 +239,8 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
 
-        MinTermList model = new MinTermList();
-        MinTermListController controller = new MinTermListController(model);
+        MinTermList mintermlist = new MinTermList();
+        MinTermListController controller = new MinTermListController(mintermlist);
         GUI gui = new GUI(controller);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
