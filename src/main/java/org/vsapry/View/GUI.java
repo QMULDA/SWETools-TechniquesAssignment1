@@ -198,6 +198,9 @@ public class GUI extends JFrame {
 
                 Quine quine = new Quine();
                 QuineController quinecontroller = new QuineController(quine);
+                threeBitMinTermFactory threeBitFactory = new threeBitMinTermFactory();
+                fourBitMinTermFactory fourBitFactory = new fourBitMinTermFactory();
+                fiveBitMinTermFactory fiveBitFactory = new fiveBitMinTermFactory();
 
                 set = controller.getMin();
 
@@ -209,11 +212,11 @@ public class GUI extends JFrame {
                         String str = it.next();
 
                         if (MenuBar.bits == 3)
-                            quinecontroller.addTerm(dataThree(str));
+                            quinecontroller.addTerm(String.valueOf(threeBitFactory.createMinterm(Integer.parseInt(str))));
                         else if (MenuBar.bits == 4)
-                            quinecontroller.addTerm(dataFour(str));
+                            quinecontroller.addTerm(String.valueOf(fourBitFactory.createMinterm(Integer.parseInt(str))));
                         else if (MenuBar.bits == 5)
-                            quinecontroller.addTerm(dataFive(str));
+                            quinecontroller.addTerm(String.valueOf(fiveBitFactory.createMinterm(Integer.parseInt(str))));
 
                         System.out.println(str);
                     }
