@@ -68,17 +68,15 @@ public class MinTerm {
 		return true;
 	}
 
-	// number of the difference
-
-	public int resolutionCount(MinTerm a) throws ExceptionQuine {
+	public int numberOfDifferencesBetweenMinTerms(MinTerm a) throws ExceptionQuine {
 		if (count != a.count)
-			throw new ExceptionQuine("MinTerm::resolutionCount()");
-		int resCount = 0;
+			throw new ExceptionQuine("MinTerm::numberOfDifferencesBetweenMinTerms()");
+		int numberOfDifferencesBetweenMinTerms = 0;
 		for (int i = 0; i < count; i++) {
 			if (term[i] != a.term[i])
-				resCount++;
+				numberOfDifferencesBetweenMinTerms++;
 		}
-		return resCount;
+		return numberOfDifferencesBetweenMinTerms;
 	}
 
 	// combining two minterms
