@@ -12,7 +12,7 @@ public class MinTerm {
 	protected static final int SET = 1;
 	protected static final int ANY = -1;
 	// attribute
-	protected int count;
+	protected int numberOfCharsInMinTerm;
 	protected int[] term;
 
 	// constructing & reading
@@ -23,13 +23,13 @@ public class MinTerm {
 		for (int i = 0; i < str.length(); i++) {
 			switch (str.charAt(i)) {
 			case NOT_CH:
-				term[count++] = NOT;
+				term[numberOfCharsInMinTerm++] = NOT;
 				break;
 			case SET_CH:
-				term[count++] = SET;
+				term[numberOfCharsInMinTerm++] = SET;
 				break;
 			case ANY_CH:
-				term[count++] = ANY;
+				term[numberOfCharsInMinTerm++] = ANY;
 				break;
 			}
 		}
@@ -39,8 +39,8 @@ public class MinTerm {
 	//creates a stringbuffer that is the length of the number of terms
 	//for every term, it is converted from 0,1,-1 to "0","1","-1"
 	public String toString() {
-		StringBuffer buf = new StringBuffer(count);
-		for (int i = 0; i < count; i++) {
+		StringBuffer buf = new StringBuffer(numberOfCharsInMinTerm);
+		for (int i = 0; i < numberOfCharsInMinTerm; i++) {
 			switch (term[i]) {
 			case NOT:
 				buf.append(NOT_CH);
@@ -59,9 +59,9 @@ public class MinTerm {
 	// comparing minterm
 
 	public boolean isSame(MinTerm a) throws ExceptionQuine {
-		if (count != a.count)
+		if (numberOfCharsInMinTerm != a.numberOfCharsInMinTerm)
 			throw new ExceptionQuine("MinTerm::isSame()");
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < numberOfCharsInMinTerm; i++) {
 			if (term[i] != a.term[i])
 				return false;
 		}
@@ -69,10 +69,10 @@ public class MinTerm {
 	}
 
 	public int numberOfDifferencesBetweenMinTerms(MinTerm a) throws ExceptionQuine {
-		if (count != a.count)
+		if (numberOfCharsInMinTerm != a.numberOfCharsInMinTerm)
 			throw new ExceptionQuine("MinTerm::numberOfDifferencesBetweenMinTerms()");
 		int numberOfDifferencesBetweenMinTerms = 0;
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < numberOfCharsInMinTerm; i++) {
 			if (term[i] != a.term[i])
 				numberOfDifferencesBetweenMinTerms++;
 		}
@@ -82,10 +82,10 @@ public class MinTerm {
 	// combining two minterms
 
 	public static MinTerm combine(MinTerm a, MinTerm b) throws ExceptionQuine {
-		if (a.count != b.count)
+		if (a.numberOfCharsInMinTerm != b.numberOfCharsInMinTerm)
 			throw new ExceptionQuine("MinTerm::combine()");
-		StringBuffer buf = new StringBuffer(a.count);
-		for (int i = 0; i < a.count; i++) {
+		StringBuffer buf = new StringBuffer(a.numberOfCharsInMinTerm);
+		for (int i = 0; i < a.numberOfCharsInMinTerm; i++) {
 			if (a.term[i] != b.term[i])
 				buf.append(ANY_CH);
 			else
