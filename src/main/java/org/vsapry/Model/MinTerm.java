@@ -16,6 +16,8 @@ public class MinTerm {
 	protected int[] term;
 
 	// constructing & reading
+	//it creates an array of integers that is the same length as the string
+	//for every char  in string, it looks at the char and fills the array with the correct mapping
 	public MinTerm(String str) {
 		term = new int[str.length()];
 		for (int i = 0; i < str.length(); i++) {
@@ -34,7 +36,8 @@ public class MinTerm {
 	}
 
 	// converted to string
-
+	//creates a stringbuffer that is the length of the number of terms
+	//for every term, it is converted from 0,1,-1 to "0","1","-1"
 	public String toString() {
 		StringBuffer buf = new StringBuffer(count);
 		for (int i = 0; i < count; i++) {

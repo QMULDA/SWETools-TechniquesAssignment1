@@ -12,7 +12,7 @@ public class fourBitMinTermFactory implements MinTermFactory {
         }
 
         String bits = String.format("%4s", Integer.toBinaryString(numericValue))
-                .replace(' ', '0'); // ensures leading zeros        }
+                .replace(' ', '0');
         return new MinTerm(bits);
     }
 }
