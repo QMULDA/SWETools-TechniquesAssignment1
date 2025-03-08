@@ -81,9 +81,7 @@ public class MinTerm {
 
 	// combining two minterms
 
-	public static MinTerm combine(MinTerm a, MinTerm b) throws ExceptionQuine {
-		if (a.numberOfCharsInMinTerm != b.numberOfCharsInMinTerm)
-			throw new ExceptionQuine("MinTerm::combine()");
+	public static MinTerm combine(MinTerm a, MinTerm b) {
 		StringBuffer buf = new StringBuffer(a.numberOfCharsInMinTerm);
 		for (int i = 0; i < a.numberOfCharsInMinTerm; i++) {
 			if (a.term[i] != b.term[i])
