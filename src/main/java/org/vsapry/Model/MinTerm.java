@@ -56,8 +56,6 @@ public class MinTerm {
 		return buf.toString();
 	}
 
-	// comparing minterm
-
 	public boolean isSame(MinTerm a) throws ExceptionQuine {
 		if (numberOfCharsInMinTerm != a.numberOfCharsInMinTerm)
 			throw new ExceptionQuine("MinTerm::isSame()");
@@ -78,8 +76,6 @@ public class MinTerm {
 		}
 		return numberOfDifferencesBetweenMinTerms;
 	}
-
-	// combining two minterms
 
 	public static MinTerm combine(MinTerm a, MinTerm b) {
 		StringBuffer buf = new StringBuffer(a.numberOfCharsInMinTerm);

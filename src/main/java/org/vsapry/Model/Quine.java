@@ -51,8 +51,7 @@ public class Quine {
 			for (int j = i + 1; j < count; j++) {
 				// finding the terms which differs in one place
 				if (terms[i].numberOfDifferencesBetweenMinTerms(terms[j]) == 1) {
-					reducedTerms[reducedCount++] = MinTerm.combine(terms[i],
-							terms[j]);
+					reducedTerms[reducedCount++] = MinTerm.combine(terms[i], terms[j]);
 					used[i] = true;
 					used[j] = true;
 				}
