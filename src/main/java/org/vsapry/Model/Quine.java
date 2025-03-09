@@ -7,19 +7,19 @@ public class Quine {
 	protected static final int MAX_TERMS = 0xff;// 0xff=255
 	// attribute
 	public MinTerm[] terms = new MinTerm[MAX_TERMS];
-	public int count = 0; //TODO change count name
+	public int numMinTermsInTerm = 0; //TODO change count name
 
 	// adding minterms
 	public void addTerm(String str) throws ExceptionQuine {
-		if (count == MAX_TERMS)
+		if (numMinTermsInTerm == MAX_TERMS)
 			throw new ExceptionQuine("Quine::addTerm()");
-		terms[count++] = new MinTerm(str);
+		terms[numMinTermsInTerm++] = new MinTerm(str);
 	}
 
 	// converted to string
 	public String toString() {
 		StringBuffer buf = new StringBuffer(); //TODO change buf name
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < numMinTermsInTerm; i++) {
 			buf.append(terms[i] + "\n");
 		}
 		return buf.toString();
@@ -27,7 +27,7 @@ public class Quine {
 
 	// see whether the element already exists
 	public boolean hasTerm(MinTerm a) throws ExceptionQuine {
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < numMinTermsInTerm; i++) {
 			if (a.isSame(terms[i]))
 				return true;
 		}
@@ -47,9 +47,8 @@ public class Quine {
 		MinTerm[] reducedTerms = new MinTerm[MAX_TERMS];
 		boolean[] used = new boolean[MAX_TERMS];
 		// working with all minterms
-		for (int i = 0; i < count; i++) {
-			for (int j = i + 1; j < count; j++) {
-				// finding the terms which differs in one place
+		for (int i = 0; i < numMinTermsInTerm; i++) {
+			for (int j = i + 1; j < numMinTermsInTerm; j++) {
 				if (terms[i].numberOfDifferencesBetweenMinTerms(terms[j]) == 1) {
 					reducedTerms[reducedCount++] = MinTerm.combine(terms[i], terms[j]);
 					used[i] = true;
@@ -57,23 +56,18 @@ public class Quine {
 				}
 			}
 		}
-		// copy the unchanged minterm in new list
 
 		int totalReduced = reducedCount;
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < numMinTermsInTerm; i++) {
 			if (!used[i]) {
 				reducedTerms[totalReduced++] = terms[i];
 			}
 		}
-		// initialize
-		count = 0;
-		// storing in a list(except the double term)
+		numMinTermsInTerm = 0;
 		for (int i = 0; i < totalReduced; i++) {
 			if (!hasTerm(reducedTerms[i]))
-				terms[count++] = reducedTerms[i];
+				terms[numMinTermsInTerm++] = reducedTerms[i];
 		}
-		// number of reduction to produce
-		// System.out.println(reducedCount);
 		return reducedCount;
 	}
 }
