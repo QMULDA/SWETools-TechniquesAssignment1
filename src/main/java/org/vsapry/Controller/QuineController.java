@@ -1,8 +1,8 @@
 package org.vsapry.Controller;
 
-import org.vsapry.ExceptionQuine;
-import org.vsapry.Model.MinTerm;
 import org.vsapry.Model.Quine;
+
+import javax.naming.LimitExceededException;
 
 public class QuineController {
 
@@ -10,7 +10,7 @@ public class QuineController {
 
     public QuineController(Quine quine) {this.quine = quine;}
 
-    public void addTerm(String str) throws ExceptionQuine {
+    public void addTerm(String str) throws LimitExceededException {
         quine.addTerm(str);
     }
 
@@ -18,7 +18,7 @@ public class QuineController {
         return quine.toString();
     }
 
-    public void simplify() throws ExceptionQuine{
+    public void simplify(){
         quine.simplify();
     }
 

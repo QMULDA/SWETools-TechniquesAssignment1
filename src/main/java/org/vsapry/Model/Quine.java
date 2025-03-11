@@ -1,24 +1,24 @@
 package org.vsapry.Model;
 
-import org.vsapry.ExceptionQuine;
+import javax.naming.LimitExceededException;
 
 public class Quine {
 	// macro
 	protected static final int MAX_TERMS = 0xff;// 0xff=255
 	// attribute
 	public MinTerm[] terms = new MinTerm[MAX_TERMS];
-	public int numMinTermsInTerm = 0; //TODO change count name
+	public int numMinTermsInTerm = 0;
 
 	// adding minterms
-	public void addTerm(String str) throws ExceptionQuine {
+	public void addTerm(String str) throws LimitExceededException {
 		if (numMinTermsInTerm == MAX_TERMS)
-			throw new ExceptionQuine("Quine::addTerm()");
+			throw new LimitExceededException("Cannot have more than 255 Terms");
 		terms[numMinTermsInTerm++] = new MinTerm(str);
 	}
 
 	// converted to string
 	public String toString() {
-		StringBuffer buf = new StringBuffer(); //TODO change buf name
+		StringBuffer buf = new StringBuffer();
 		for (int i = 0; i < numMinTermsInTerm; i++) {
 			buf.append(terms[i] + "\n");
 		}
@@ -26,7 +26,7 @@ public class Quine {
 	}
 
 	// see whether the element already exists
-	public boolean hasTerm(MinTerm a) throws ExceptionQuine {
+	public boolean hasTerm(MinTerm a){
 		for (int i = 0; i < numMinTermsInTerm; i++) {
 			if (a.isSame(terms[i]))
 				return true;
@@ -35,13 +35,13 @@ public class Quine {
 	}
 
 	// verification of the function
-	public void simplify() throws ExceptionQuine {
+	public void simplify(){
 		while (reduce() > 0)
 			;
 	}
 
 	// reduction of the minterm
-	public int reduce() throws ExceptionQuine {
+	public int reduce(){
 		// variable
 		int reducedCount = 0;
 		MinTerm[] reducedTerms = new MinTerm[MAX_TERMS];

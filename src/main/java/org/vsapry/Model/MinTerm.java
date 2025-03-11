@@ -1,7 +1,5 @@
 package org.vsapry.Model;
 
-import org.vsapry.ExceptionQuine;
-
 public class MinTerm {
 	// input data representation
 	public static final char NOT_CH = '0';
@@ -56,9 +54,9 @@ public class MinTerm {
 		return buf.toString();
 	}
 
-	public boolean isSame(MinTerm a) throws ExceptionQuine {
+	public boolean isSame(MinTerm a) {
 		if (numberOfCharsInMinTerm != a.numberOfCharsInMinTerm)
-			throw new ExceptionQuine("MinTerm::isSame()");
+			throw new IllegalArgumentException("MinTerms need to be the same length of characters to compare");
 		for (int i = 0; i < numberOfCharsInMinTerm; i++) {
 			if (term[i] != a.term[i])
 				return false;
@@ -66,9 +64,9 @@ public class MinTerm {
 		return true;
 	}
 
-	public int numberOfDifferencesBetweenMinTerms(MinTerm a) throws ExceptionQuine {
+	public int numberOfDifferencesBetweenMinTerms(MinTerm a) {
 		if (numberOfCharsInMinTerm != a.numberOfCharsInMinTerm)
-			throw new ExceptionQuine("MinTerm::numberOfDifferencesBetweenMinTerms()");
+			throw new IllegalArgumentException("MinTerms are differing lengths");
 		int numberOfDifferencesBetweenMinTerms = 0;
 		for (int i = 0; i < numberOfCharsInMinTerm; i++) {
 			if (term[i] != a.term[i])
