@@ -5,6 +5,7 @@ import org.vsapry.Controller.MinTermListController;
 import org.vsapry.Controller.QuineController;
 import org.vsapry.Model.MinTermList;
 import org.vsapry.Model.Quine;
+import org.vsapry.View.MinTermFactories.*;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -42,36 +43,6 @@ public class GUI extends JFrame {
 
     private final MinTermListController controller;
 
-    static public String dataThree(String input) {
-        String bin[] = {"000", "001", "010", "011", "100", "101", "110", "111"};
-        int i = Integer.parseInt(input);
-        return bin[i];
-    }
-
-    static public String dataFour(String input) {
-
-        String bin[] = {"0000", "0001", "0010", "0011", "0100", "0101",
-                "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101",
-                "1110", "1111"};
-
-        int i = Integer.parseInt(input);
-        return bin[i];
-    }
-
-    static public String dataFive(String input) {
-
-        String bin[] = {"00000", "00001", "00010", "00011", "00100", "00101",
-                "00110", "00111", "01000", "01001", "01010", "01011", "01100",
-                "01101", "01110", "01111", "10000", "10001", "10010", "10011",
-                "10100", "10101", "10110", "10111", "11000", "11001", "11010",
-                "11011", "11100", "11101", "11110", "11111"};
-
-        int i = Integer.parseInt(input);
-
-        return bin[i];
-
-    }
-
     public GUI(MinTermListController controller) {
         super("Quine McCluskey Prime Implicant Generator");
         this.controller = controller;
@@ -98,10 +69,7 @@ public class GUI extends JFrame {
         minIn.addKeyListener(new KeyListener() {
 
             @Override
-            public void keyTyped(KeyEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
+            public void keyTyped(KeyEvent arg0) {}
 
             @Override
             public void keyReleased(KeyEvent arg0) {
@@ -161,10 +129,7 @@ public class GUI extends JFrame {
             }
 
             @Override
-            public void keyPressed(KeyEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
+            public void keyPressed(KeyEvent arg0) {}
         });
         panel.add(minIn);
 
@@ -227,7 +192,6 @@ public class GUI extends JFrame {
 
                     resultShow.setText(temp1);
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 
@@ -270,12 +234,16 @@ public class GUI extends JFrame {
             MenuBar.bits = 2;
         }
 
-        if (MenuBar.bits < 3 || MenuBar.bits > 5) {
+        if (gui.hasInvalidInputForNumberOfBits()) {
             JOptionPane.showMessageDialog(null,
                     "Wrong input. Press File and then NEW", "Error",
                     JOptionPane.ERROR_MESSAGE, null);
 
         }
 
+    }
+
+    public boolean hasInvalidInputForNumberOfBits(){
+        return MenuBar.bits < 3 || MenuBar.bits > 5;
     }
 }
