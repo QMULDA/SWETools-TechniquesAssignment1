@@ -1,4 +1,4 @@
-package org.vsapry.View;
+package org.vsapry.View.MinTermFactories;
 
 import org.vsapry.Model.MinTerm;
 
