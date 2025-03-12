@@ -36,7 +36,7 @@ public class MinTerm {
 	// converted to string
 	//creates a stringbuffer that is the length of the number of terms
 	//for every term, it is converted from 0,1,-1 to "0","1","-1"
-	public String toString() {
+	public String integersToString() {
 		StringBuffer buf = new StringBuffer(numberOfCharsInMinTerm);
 		for (int i = 0; i < numberOfCharsInMinTerm; i++) {
 			switch (term[i]) {
@@ -81,7 +81,7 @@ public class MinTerm {
 			if (a.term[i] != b.term[i])
 				buf.append(ANY_CH);
 			else
-				buf.append(a.toString().charAt(i));
+				buf.append(a.integersToString().charAt(i));
 		}
 		return new MinTerm(buf.toString());
 	}

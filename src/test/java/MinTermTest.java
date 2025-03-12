@@ -16,9 +16,9 @@ public class MinTermTest {
     }
 
     @Test
-    void testToString() {
-        assertEquals("0", minTermA.toString());
-        assertEquals("1", minTermB.toString());
+    void testIntegersToString() {
+        assertEquals("0", minTermA.integersToString());
+        assertEquals("1", minTermB.integersToString());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class MinTermTest {
         MinTerm a = new MinTerm("0111");
         MinTerm b = new MinTerm("1111");
 
-        assertEquals("_111", MinTerm.combine(a, b).toString());
+        assertEquals("_111", MinTerm.combine(a, b).integersToString());
     }
 
 }
